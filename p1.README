@@ -7,6 +7,34 @@ ndas Neha Das
 
 ################################################################################
 
+
+Problem Objective:
+
+Inspect the LULESH 2.0 code as to where it spends most of its time using mpiP for different configurations of (nodes X, OpenMP threads T, MPI tasks P, problem size S , and iterations I).
+
+
+Compilation and Execution Instructions:
+
+(Refer to the HW description)
+tar -xzvf lulesh2.0.3.tgz
+tar -xzvf mpiP-3.4.1.tar.gz
+cd mpiP-3.4.1
+./configure --disable-libunwind ; make shared        // Compile mpiP
+cd ..
+
+Link LULESH with mpiP
+-LmpiP-3.4.1/ -lmpiP -lbfd -liberty
+
+
+srun -N X -n 16*X -popteron --pty /bin/bash          // Reserve nodes (see above for X)
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:mpiP-3.4.1/  // Allow runtime loader to find libmpiP.so
+export OMP_NUM_THREADS=T                             // Set OpenMP threads (see above for T)
+make                                                 // Compile LULESH
+mpirun -np P -bind-to core ./lulesh2.0 -s S -i I     // Run the code (see above for P/S/I)
+
+
+Observations/Discussions:
+
 Elapsed time A: 00.24 sec
 Elapsed time B: 38.47 sec
 Elapsed time C: 38.32 sec
