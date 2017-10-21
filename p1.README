@@ -15,24 +15,24 @@ Elapsed time D: 38.36 sec
 NUMA architecture for an opteron processor with 16 cores and 2 NUMA nodes ( 8 cores per NUMA node )
 
  ___________________________________________
-|											                      |
-|      NUMA 					NUMA		|
-|      node 0					node 1		|
-|	  _____                    _____		|
-|	 |o  o |	              |o  o |		|
-|	 |o  o |	              |o  o |		|
-|	 |o  o |------------------|o  o |		|
-|	 |o  o |	interconnect  |o  o |		|
-|	 |_____|                  |_____|		|
-|	 	|						 | 			|
-|	 ___|__					  ___|__		|
-|	|______|				 |______|		|
-|											|
-|	NUMA local				NUMA local		|
-|	memory					memory			|
+|                                           |
+|      NUMA                     NUMA        |
+|      node 0                   node 1      |
+|      _____                    _____       |
+|     |o  o |                  |o  o |      |
+|     |o  o |                  |o  o |      |
+|     |o  o |------------------|o  o |      |
+|     |o  o |    interconnect  |o  o |      |
+|     |_____|                  |_____|      |
+|        |                        |         |
+|     ___|__                   ___|__       |
+|    |______|                 |______|      |
+|                                           |
+|    NUMA local                NUMA local   |
+|    memory                    memory       |
 |___________________________________________|
 
-	Node 0
+    Node 0
 
 The above diagram explains NUMA architecture.
 Reference ( http://dl.acm.org/citation.cfm?id=2500468.2500477&coll=portal&dl=ACM )
